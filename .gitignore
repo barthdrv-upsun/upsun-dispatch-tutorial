@@ -17,3 +17,8 @@
 ###> tutorial ###
 .DS_Store
 ###< tutorial ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+/.phpunit.cache/
+###< phpunit/phpunit ###
