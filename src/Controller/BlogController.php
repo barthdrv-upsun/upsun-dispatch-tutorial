@@ -24,6 +24,20 @@ final class BlogController extends AbstractController
         ]);
     }
 
+    #[Route('/category/{slug}', name: 'category', methods: ['GET'], requirements: ['slug' => '[a-z0-9-]+'])]
+    public function category(string $slug): Response
+    {
+        $articles = $this->articles->findByCategorySlug($slug);
+        if ([] === $articles) {
+            throw $this->createNotFoundException('No articles found for category "'.$slug.'".');
+        }
+
+        return $this->render('blog/category.html.twig', [
+            'categoryName' => $this->articles->findCategoryName($slug),
+            'articles' => $articles,
+        ]);
+    }
+
     #[Route('/articles/{slug}', name: 'article', methods: ['GET'], requirements: ['slug' => '[a-z0-9-]+'])]
     public function article(string $slug): Response
     {
