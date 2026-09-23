@@ -14,15 +14,20 @@ a clean demo project for Upsun internal users.
 | Method | Path                  | Page                          |
 |--------|-----------------------|-------------------------------|
 | GET    | `/`                   | Blog index (featured + grid)  |
+| GET    | `/categories/{slug}`  | Articles in one category      |
 | GET    | `/articles/{slug}`    | A single article              |
 
-The `{slug}` is the Markdown filename without its extension.
+For articles the `{slug}` is the Markdown filename without its extension; for
+categories it is the slugified `category` front matter value (e.g.
+`AI Engineering` → `ai-engineering`). Categories are derived from the articles,
+so a category page exists as soon as one article uses it.
 
 ## Project layout
 
 ```
 content/articles/*.md          Articles (front matter + Markdown body)
 src/Blog/Article.php           Immutable article DTO
+src/Blog/Category.php          Category name, slug and article count
 src/Blog/ArticleRepository.php Reads & parses the Markdown files
 src/Controller/BlogController.php
 templates/                     Twig: base, partials, blog/index, blog/article

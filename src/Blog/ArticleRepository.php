@@ -78,6 +78,58 @@ final class ArticleRepository
     }
 
     /**
+     * Every category that has at least one article, alphabetically.
+     *
+     * @return list<Category>
+     */
+    public function findCategories(): array
+    {
+        $counts = [];
+        $names = [];
+        foreach ($this->loadIndex() as $article) {
+            $slug = $article->categorySlug();
+            $counts[$slug] = ($counts[$slug] ?? 0) + 1;
+            $names[$slug] ??= $article->category;
+        }
+
+        ksort($counts);
+
+        $categories = [];
+        foreach ($counts as $slug => $count) {
+            $categories[] = new Category($names[$slug], (string) $slug, $count);
+        }
+
+        return $categories;
+    }
+
+    /**
+     * The category matching the given slug, or null if no article uses it.
+     */
+    public function findCategoryBySlug(string $slug): ?Category
+    {
+        foreach ($this->findCategories() as $category) {
+            if ($category->slug === $slug) {
+                return $category;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Every article in the given category, most recent first.
+     *
+     * @return list<Article>
+     */
+    public function findByCategory(string $categorySlug): array
+    {
+        return array_values(array_filter(
+            $this->findAll(),
+            static fn (Article $a): bool => $a->categorySlug() === $categorySlug,
+        ));
+    }
+
+    /**
      * A single article with its rendered HTML body, or null if not found.
      */
     public function findOneBySlug(string $slug): ?Article

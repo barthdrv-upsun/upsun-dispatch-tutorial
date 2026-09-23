@@ -64,6 +64,10 @@
             <span class="text-sm text-slatey-400">{{ articles|length }} posts</span>
         </div>
 
+        <div class="mt-6">
+            {% include 'partials/_category_nav.html.twig' %}
+        </div>
+
         <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {% for article in articles %}
                 {% include 'partials/_article_card.html.twig' %}

@@ -1,0 +1,16 @@
+{# Category filter pills. Expects `categories`; `current` is the active slug, if any. #}
+{% set current = current|default(null) %}
+<nav class="flex flex-wrap items-center gap-2" aria-label="Browse by category">
+    <a href="{{ path('home') }}"
+       class="tag {{ current is null ? 'tag-accent' : 'transition-colors hover:border-slatey-300 hover:text-ink-950' }}">
+        All
+        <span class="{{ current is null ? 'text-white/50' : 'text-slatey-400' }}">{{ categories|reduce((total, c) => total + c.count, 0) }}</span>
+    </a>
+    {% for category in categories %}
+        <a href="{{ path('category', { slug: category.slug }) }}"
+           class="tag {{ current == category.slug ? 'tag-accent' : 'transition-colors hover:border-slatey-300 hover:text-ink-950' }}">
+            {{ category.name }}
+            <span class="{{ current == category.slug ? 'text-white/50' : 'text-slatey-400' }}">{{ category.count }}</span>
+        </a>
+    {% endfor %}
+</nav>

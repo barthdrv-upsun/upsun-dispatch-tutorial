@@ -32,6 +32,14 @@ final readonly class Article
     }
 
     /**
+     * URL slug for this article's category, e.g. "AI Engineering" -> "ai-engineering".
+     */
+    public function categorySlug(): string
+    {
+        return Category::slugify($this->category);
+    }
+
+    /**
      * Initials used for the author avatar, e.g. "Marta Olsen" -> "MO".
      */
     public function authorInitials(): string

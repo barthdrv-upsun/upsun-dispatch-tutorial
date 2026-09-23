@@ -21,6 +21,22 @@ final class BlogController extends AbstractController
         return $this->render('blog/index.html.twig', [
             'featured' => $this->articles->findFeatured(),
             'articles' => $this->articles->findAll(),
+            'categories' => $this->articles->findCategories(),
+        ]);
+    }
+
+    #[Route('/categories/{slug}', name: 'category', methods: ['GET'], requirements: ['slug' => '[a-z0-9-]+'])]
+    public function category(string $slug): Response
+    {
+        $category = $this->articles->findCategoryBySlug($slug);
+        if (null === $category) {
+            throw $this->createNotFoundException('No category found for slug "'.$slug.'".');
+        }
+
+        return $this->render('blog/category.html.twig', [
+            'category' => $category,
+            'categories' => $this->articles->findCategories(),
+            'articles' => $this->articles->findByCategory($slug),
         ]);
     }
 
