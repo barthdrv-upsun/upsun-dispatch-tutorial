@@ -49,6 +49,36 @@ final class ArticleRepository
     }
 
     /**
+     * Articles in a category (or all when null), most viewed first.
+     *
+     * @return list<Article>
+     */
+    public function findByCategory(?string $category): array
+    {
+        $articles = array_values(array_filter(
+            $this->loadIndex(),
+            static fn (Article $a): bool => null === $category || $a->category === $category,
+        ));
+
+        usort($articles, static fn (Article $a, Article $b): int => [$b->views, $b->date] <=> [$a->views, $a->date]);
+
+        return $articles;
+    }
+
+    /**
+     * Distinct category names, alphabetically.
+     *
+     * @return list<string>
+     */
+    public function findCategories(): array
+    {
+        $categories = array_unique(array_map(static fn (Article $a): string => $a->category, $this->loadIndex()));
+        sort($categories);
+
+        return array_values($categories);
+    }
+
+    /**
      * The single featured article, falling back to the most recent one.
      */
     public function findFeatured(): ?Article
@@ -149,6 +179,7 @@ final class ArticleRepository
             tags: $tags,
             readingTime: $this->readingTime($body),
             featured: (bool) ($meta['featured'] ?? false),
+            views: max(0, (int) ($meta['views'] ?? 0)),
             content: $withContent ? $this->converter()->convert($body)->getContent() : null,
         );
     }

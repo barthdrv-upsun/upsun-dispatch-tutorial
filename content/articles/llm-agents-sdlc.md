@@ -7,6 +7,7 @@ date: "2026-06-24"
 category: "AI Engineering"
 tags: ["llm", "agents", "sdlc", "automation", "devex"]
 featured: false
+views: 12450
 ---
 
 The first wave of AI in software was autocomplete on steroids. You typed, the model suggested, you accepted or rejected. Useful, incremental, and fundamentally still *you* doing the work.

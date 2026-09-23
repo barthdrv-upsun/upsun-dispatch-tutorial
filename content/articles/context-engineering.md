@@ -7,6 +7,7 @@ date: "2026-06-12"
 category: "AI Engineering"
 tags: ["llm", "context", "prompting", "agents", "architecture"]
 featured: false
+views: 8730
 ---
 
 For about two years, "prompt engineering" was a job title, a course category, and a LinkedIn flex. The premise was that the right magic words — "you are an expert," "take a deep breath," "think step by step" — unlocked dramatically better model output.

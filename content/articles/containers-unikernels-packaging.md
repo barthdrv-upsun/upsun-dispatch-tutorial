@@ -7,6 +7,7 @@ date: "2026-04-30"
 category: "Architecture"
 tags: ["containers", "unikernels", "wasm", "packaging"]
 featured: false
+views: 2140
 ---
 
 A decade ago, "how do we package and ship this application?" was a genuinely hard question. Then containers arrived, the question seemed answered, and the industry moved on. But the container model carries trade-offs we have quietly accepted, and the alternatives emerging around it are worth understanding — not because containers are going away, but because they are no longer the only sensible answer.

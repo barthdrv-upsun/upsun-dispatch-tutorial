@@ -7,6 +7,7 @@ date: "2026-06-18"
 category: "Platform Engineering"
 tags: ["preview environments", "git", "code review", "ci/cd"]
 featured: true
+views: 9860
 ---
 
 For most of software history, code review meant reading. You opened a diff, you squinted at the red and green lines, and you tried to simulate the program in your head. We got remarkably good at this. We also got remarkably good at approving changes that looked correct and behaved otherwise.

@@ -22,6 +22,7 @@ module.exports = {
         brand: {
           blue: '#0050FF',  // primary accent
           lime: '#E6FB66',  // signature highlight
+          green: '#22C55E',
           violet: '#6D5BFF',
           pink: '#FF4D8D',
         },

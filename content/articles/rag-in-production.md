@@ -7,6 +7,7 @@ date: "2026-06-02"
 category: "AI Engineering"
 tags: ["rag", "llm", "vector search", "embeddings", "production"]
 featured: false
+views: 7290
 ---
 
 Retrieval-Augmented Generation has a deceptive learning curve. The weekend demo — embed some documents, drop them in a vector store, stuff the top matches into a prompt — works astonishingly well. Then you put it in front of real users with real questions, and the cracks appear immediately.

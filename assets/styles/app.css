@@ -24,6 +24,12 @@
   .tag-accent {
     @apply border-transparent bg-ink-950 text-white;
   }
+  .tag-active {
+    @apply border-transparent bg-brand-blue text-white;
+  }
+  .tag-muted {
+    @apply transition-colors hover:border-slatey-300 hover:text-ink-950;
+  }
 
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors;

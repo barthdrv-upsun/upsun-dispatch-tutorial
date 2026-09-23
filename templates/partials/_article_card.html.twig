@@ -13,7 +13,7 @@
             <span class="h-2 w-2 rounded-full {{ accent }}"></span>
             {{ article.category }}
         </span>
-        <span class="text-xs text-slatey-400">{{ article.readingTime }} min read</span>
+        <span class="text-xs text-slatey-400">{{ article.views|number_format }} views · {{ article.readingTime }} min read</span>
     </div>
 
     <h3 class="font-display text-xl font-bold leading-snug tracking-tight text-ink-950 transition-colors group-hover:text-brand-blue">

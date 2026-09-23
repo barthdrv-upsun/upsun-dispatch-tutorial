@@ -27,6 +27,7 @@ final readonly class Article
         public array $tags,
         public int $readingTime,
         public bool $featured,
+        public int $views = 0,
         public ?string $content = null,
     ) {
     }

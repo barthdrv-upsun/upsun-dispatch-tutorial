@@ -7,6 +7,7 @@ date: "2026-05-27"
 category: "Platform Engineering"
 tags: ["iac", "terraform", "gitops", "automation"]
 featured: false
+views: 3580
 ---
 
 Infrastructure as Code began as a liberation. Instead of clicking through a console and praying you could reproduce it, you declared your infrastructure in files, committed them, and let a tool converge reality to match. Reproducible. Reviewable. Version-controlled.

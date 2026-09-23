@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Blog\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class BlogController extends AbstractController
@@ -16,11 +17,18 @@ final class BlogController extends AbstractController
     }
 
     #[Route('/', name: 'home', methods: ['GET'])]
-    public function index(): Response
+    public function index(#[MapQueryParameter] ?string $category = null): Response
     {
+        $categories = $this->articles->findCategories();
+        if (null !== $category && !\in_array($category, $categories, true)) {
+            throw $this->createNotFoundException('No category named "'.$category.'".');
+        }
+
         return $this->render('blog/index.html.twig', [
             'featured' => $this->articles->findFeatured(),
-            'articles' => $this->articles->findAll(),
+            'articles' => $this->articles->findByCategory($category),
+            'categories' => $categories,
+            'current_category' => $category,
         ]);
     }
 

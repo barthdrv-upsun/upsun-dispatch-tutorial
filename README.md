@@ -13,7 +13,7 @@ a clean demo project for Upsun internal users.
 
 | Method | Path                  | Page                          |
 |--------|-----------------------|-------------------------------|
-| GET    | `/`                   | Blog index (featured + grid)  |
+| GET    | `/`                   | Blog index (featured + grid, most viewed first); `?category=` filters |
 | GET    | `/articles/{slug}`    | A single article              |
 
 The `{slug}` is the Markdown filename without its extension.
@@ -45,6 +45,7 @@ date: "2026-06-30"
 category: "Platform Engineering"   # AI Engineering | Cloud Economics | Architecture | ...
 tags: ["tag-one", "tag-two"]
 featured: false                    # at most one featured article
+views: 0                           # view count; the index sorts by it (desc)
 ---
 
 Your Markdown body. Headings, lists, code blocks, blockquotes and tables

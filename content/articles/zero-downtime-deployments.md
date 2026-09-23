@@ -7,6 +7,7 @@ date: "2026-05-06"
 category: "Platform Engineering"
 tags: ["deployments", "ci/cd", "databases", "reliability"]
 featured: false
+views: 5040
 ---
 
 The teams that ship most confidently are the ones for whom deploying is boring. No maintenance window, no held breath, no Friday-deploy superstition. A deploy is just a thing that happens dozens of times a day and nobody notices. Getting there is less about heroics and more about a few mechanical disciplines — and avoiding one specific trap.

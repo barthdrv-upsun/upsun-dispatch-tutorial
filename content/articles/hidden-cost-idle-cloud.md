@@ -7,6 +7,7 @@ date: "2026-06-09"
 category: "Cloud Economics"
 tags: ["finops", "cost optimization", "autoscaling", "cloud"]
 featured: false
+views: 6120
 ---
 
 Here is an uncomfortable industry statistic: across most organizations, somewhere between 30% and 40% of cloud compute spend is wasted on resources that are provisioned but idle. Not under-utilized. *Idle.* Doing nothing, billed by the second.

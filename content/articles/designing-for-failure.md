@@ -7,6 +7,7 @@ date: "2026-05-14"
 category: "Architecture"
 tags: ["distributed systems", "resilience", "reliability", "patterns"]
 featured: false
+views: 4310
 ---
 
 There is a moment in every engineer's career when they stop asking "what if this dependency fails?" and start assuming it already has. That shift — from hoping for reliability to designing for failure — is what separates systems that survive a bad afternoon from systems that make the news.
