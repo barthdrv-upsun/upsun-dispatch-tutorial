@@ -63,7 +63,7 @@
             <h2 class="font-display text-2xl font-bold tracking-tight text-ink-950">
                 Most viewed{% if current_category %} in {{ current_category }}{% endif %}
             </h2>
-            <span class="text-sm text-slatey-400">{{ articles|length }} posts</span>
+            <span class="text-sm text-slatey-400">{{ articles|length }} {{ articles|length == 1 ? 'post' : 'posts' }}</span>
         </div>
 
         <nav class="mt-6 flex flex-wrap gap-2" aria-label="Filter by category">
