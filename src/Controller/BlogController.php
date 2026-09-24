@@ -25,7 +25,7 @@ final class BlogController extends AbstractController
         }
 
         return $this->render('blog/index.html.twig', [
-            'featured' => $this->articles->findFeatured(),
+            'featured' => null === $category ? $this->articles->findFeatured() : null,
             'articles' => $this->articles->findByCategory($category),
             'categories' => $categories,
             'current_category' => $category,
