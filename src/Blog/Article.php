@@ -32,6 +32,14 @@ final readonly class Article
     }
 
     /**
+     * URL-safe form of the category, e.g. "AI Engineering" -> "ai-engineering".
+     */
+    public function categorySlug(): string
+    {
+        return strtolower(trim((string) preg_replace('/[^A-Za-z0-9]+/', '-', $this->category), '-'));
+    }
+
+    /**
      * Initials used for the author avatar, e.g. "Marta Olsen" -> "MO".
      */
     public function authorInitials(): string
