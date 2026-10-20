@@ -35,15 +35,21 @@ final class ArticleRepository
     }
 
     /**
-     * All articles, most recent first.
+     * Articles, most recent first, optionally capped at $limit.
+     *
+     * @param int|null $limit Maximum number of articles to return; null returns all
      *
      * @return list<Article>
      */
-    public function findAll(): array
+    public function findAll(?int $limit = null): array
     {
         $articles = array_values($this->loadIndex());
 
         usort($articles, static fn (Article $a, Article $b): int => $b->date <=> $a->date);
+
+        if (null !== $limit) {
+            return array_slice($articles, 0, max(0, $limit));
+        }
 
         return $articles;
     }
