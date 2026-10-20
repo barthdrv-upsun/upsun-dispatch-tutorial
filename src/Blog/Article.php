@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Blog;
 
+use Symfony\Component\String\Slugger\AsciiSlugger;
+
 /**
  * An immutable representation of a blog article parsed from a markdown file.
  *
@@ -40,5 +42,17 @@ final readonly class Article
         $initials = array_map(static fn (string $p): string => mb_strtoupper(mb_substr($p, 0, 1)), $parts);
 
         return implode('', \array_slice($initials, 0, 2));
+    }
+
+    /**
+     * URL slug for the category, e.g. "AI Engineering" -> "ai-engineering".
+     * Falls back to "uncategorized" so a blank or punctuation-only category
+     * still yields a routable slug instead of breaking page rendering.
+     */
+    public function categorySlug(): string
+    {
+        $slug = (new AsciiSlugger())->slug($this->category)->lower()->toString();
+
+        return '' !== $slug ? $slug : 'uncategorized';
     }
 }

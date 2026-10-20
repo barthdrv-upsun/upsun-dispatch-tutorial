@@ -23,7 +23,7 @@
                 </a>
             </div>
 
-            <span class="mt-12 block text-xs font-semibold uppercase tracking-wide {{ accent }}">{{ article.category }}</span>
+            <a href="{{ path('category', { slug: article.categorySlug }) }}" class="mt-12 block text-xs font-semibold uppercase tracking-wide transition-colors hover:text-white {{ accent }}">{{ article.category }}</a>
             <h1 class="mt-3 font-display text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl">
                 {{ article.title }}
             </h1>
