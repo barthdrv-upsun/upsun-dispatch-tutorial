@@ -61,7 +61,7 @@
     <section id="categories" class="mx-auto max-w-6xl px-5 pt-16">
         <div class="flex items-end justify-between border-b border-slatey-200 pb-5">
             <h2 class="font-display text-2xl font-bold tracking-tight text-ink-950">Latest articles</h2>
-            <span class="text-sm text-slatey-400">{{ articles|length }} posts</span>
+            <span class="text-sm text-slatey-400">{{ total }} posts</span>
         </div>
 
         <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -69,5 +69,23 @@
                 {% include 'partials/_article_card.html.twig' %}
             {% endfor %}
         </div>
+
+        {% if page_count > 1 %}
+            <nav aria-label="Pagination" class="mt-12 flex items-center justify-between border-t border-slatey-200 pt-6 text-sm">
+                {% if page > 1 %}
+                    <a href="{{ page - 1 == 1 ? path('home') : path('home_page', { page: page - 1 }) }}" rel="prev" class="font-medium text-slatey-500 hover:text-brand-blue">Newer</a>
+                {% else %}
+                    <span></span>
+                {% endif %}
+
+                <span class="text-slatey-400">Page {{ page }} of {{ page_count }}</span>
+
+                {% if page < page_count %}
+                    <a href="{{ path('home_page', { page: page + 1 }) }}" rel="next" class="font-medium text-slatey-500 hover:text-brand-blue">Older</a>
+                {% else %}
+                    <span></span>
+                {% endif %}
+            </nav>
+        {% endif %}
     </section>
 {% endblock %}

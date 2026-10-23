@@ -14,6 +14,7 @@ a clean demo project for Upsun internal users.
 | Method | Path                  | Page                          |
 |--------|-----------------------|-------------------------------|
 | GET    | `/`                   | Blog index (featured + grid)  |
+| GET    | `/page/{page}`        | Older pages of the blog index (5 per page, grid only) |
 | GET    | `/articles/{slug}`    | A single article              |
 
 The `{slug}` is the Markdown filename without its extension.
