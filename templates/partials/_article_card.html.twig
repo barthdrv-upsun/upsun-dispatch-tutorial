@@ -1,23 +1,18 @@
 {# Renders one article preview card. Expects `article`. #}
-{% set accent = {
-    'AI Engineering': 'bg-brand-violet',
-    'Platform Engineering': 'bg-brand-blue',
-    'Cloud Economics': 'bg-brand-lime',
-    'Architecture': 'bg-brand-pink',
-}[article.category]|default('bg-slatey-400') %}
-
-<a href="{{ path('article', { slug: article.slug }) }}"
-   class="group flex flex-col rounded-2xl border border-slatey-200 bg-white p-6 shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-slatey-300 hover:shadow-card-hover">
+{# The card is a stretched-link container rather than one wrapping anchor, so
+   the category chip can be its own link without nesting anchors. #}
+<div class="group relative flex flex-col rounded-2xl border border-slatey-200 bg-white p-6 shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-slatey-300 hover:shadow-card-hover">
     <div class="mb-4 flex items-center justify-between">
-        <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slatey-600">
-            <span class="h-2 w-2 rounded-full {{ accent }}"></span>
-            {{ article.category }}
-        </span>
+        {% include 'partials/_category_chip.html.twig' with { category: article.category, slug: article.categorySlug } only %}
         <span class="text-xs text-slatey-400">{{ article.readingTime }} min read</span>
     </div>
 
     <h3 class="font-display text-xl font-bold leading-snug tracking-tight text-ink-950 transition-colors group-hover:text-brand-blue">
-        {{ article.title }}
+        <a href="{{ path('article', { slug: article.slug }) }}">
+            {# Overlay stretching the article link across the whole card. #}
+            <span class="absolute inset-0"></span>
+            {{ article.title }}
+        </a>
     </h3>
     <p class="mt-2.5 line-clamp-3 flex-1 text-sm leading-relaxed text-slatey-500">
         {{ article.description }}
@@ -32,4 +27,4 @@
             <p class="text-slatey-400">{{ article.date|date('M j, Y') }}</p>
         </div>
     </div>
-</a>
+</div>
