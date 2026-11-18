@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8352261341c2417035bf39212d3a869",
+    "content-hash": "705a5ca74d43a3532aa62356d9cd46bb",
     "packages": [
         {
             "name": "dflydev/dot-access-data",
@@ -2624,7 +2624,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-22T10:25:05+00:00"
+            "time": "2024-07-22T10:25:05+00:00",
+            "published-time": "2024-07-26T14:58:15+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -3223,5 +3224,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.11.0"
 }

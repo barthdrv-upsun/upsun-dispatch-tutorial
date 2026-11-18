@@ -78,6 +78,19 @@ final class ArticleRepository
     }
 
     /**
+     * Every article in the category with the given slug, most recent first.
+     *
+     * @return list<Article>
+     */
+    public function findByCategorySlug(string $slug): array
+    {
+        return array_values(array_filter(
+            $this->findAll(),
+            static fn (Article $a): bool => $a->categorySlug() === $slug,
+        ));
+    }
+
+    /**
      * A single article with its rendered HTML body, or null if not found.
      */
     public function findOneBySlug(string $slug): ?Article
